@@ -2,11 +2,12 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { TrophyIcon, ChartBarIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const polls = [
   {
     id: 1,
-    question: "What's your biggest operational challenge?",
+    question: "What is your biggest operational challenge?",
     options: [
       { text: "Finding reliable cleaners", votes: 23 },
       { text: "Managing guest communications", votes: 18 },
@@ -41,7 +42,7 @@ const wins = [
     id: 2,
     name: "Marcus Johnson",
     property: "Millbrook Inn", 
-    win: "Featured in Architectural Digest's 'Small Hotels to Watch'",
+    win: "Featured in Architectural Digest Small Hotels to Watch",
     date: "5 days ago"
   },
   {
@@ -135,7 +136,7 @@ export default function Community() {
               <textarea
                 className="w-full p-3 border-2 rounded mb-3 h-20 resize-none"
                 style={{ borderColor: '#e5e7eb' }}
-                placeholder="What's your latest victory? Big or small, we celebrate it all!"
+                placeholder="What is your latest victory? Big or small, we celebrate it all!"
               />
               <button 
                 className="px-6 py-2 rounded text-white font-medium"
@@ -166,9 +167,11 @@ export default function Community() {
                     </div>
                     <p className="text-gray-700 mb-2">{win.win}</p>
                     {win.image && (
-                      <img 
+                      <Image 
                         src={win.image} 
                         alt="Win celebration"
+                        width={400}
+                        height={300}
                         className="rounded-lg mb-2 w-full max-w-md h-48 object-cover"
                       />
                     )}
@@ -269,22 +272,22 @@ export default function Community() {
                 </p>
                 
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  That's what we created at The Herwood Inn, and honestly, it came from treating every part 
+                  That is what we created at The Herwood Inn, and honestly, it came from treating every part 
                   of the experience: design, content, community, operations like they all mattered equally.
                 </p>
                 
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  I'm breaking it all down in a 10-week course: the creative decisions, the relationship-building, 
+                  I am breaking it all down in a 10-week course: the creative decisions, the relationship-building, 
                   the small touches that turned guests into friends and followers into a real community (10k strong!).
                 </p>
                 
                 <p className="text-gray-700 leading-relaxed mb-6 font-medium">
-                  This is for hosts who want their space to mean something. Let's build something beautiful together! 💛
+                  This is for hosts who want their space to mean something. Let us build something beautiful together! 💛
                 </p>
 
                 <div className="bg-white rounded-lg p-6 mb-6">
                   <h4 className="font-semibold mb-3" style={{ color: '#2d4d31' }}>
-                    What You'll Learn:
+                    What You Will Learn:
                   </h4>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li>✓ Creating a brand story that guests want to be part of</li>
