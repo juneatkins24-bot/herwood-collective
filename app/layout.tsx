@@ -1,7 +1,7 @@
-// app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NavBar from './components/NavBar'  // ← Import goes HERE at the TOP!
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,14 +23,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#059669" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <NavBar />
+      </body>
     </html>
-  )// app/layout.tsx (add this import at top)
-import NavBar from './components/NavBar'
-
-// Then update the body in your layout:
-<body className={inter.className}>
-  {children}
-  <NavBar />
-</body>
+  )
 }
