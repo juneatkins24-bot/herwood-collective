@@ -1,8 +1,26 @@
 'use client'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 
 export default function Home() {
+  const [showSignup, setShowSignup] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    property: '',
+    location: '',
+    rooms: ''
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    alert(`Welcome to the Collective, ${formData.name}! Check your email for next steps.`)
+    setShowSignup(false)
+    setFormData({ name: '', email: '', property: '', location: '', rooms: '' })
+  }
+
   return (
     <main className="min-h-screen pb-20" style={{ backgroundColor: '#fff5ea' }}>
       <div className="max-w-6xl mx-auto px-4 py-16">
@@ -101,7 +119,8 @@ export default function Home() {
           transition={{ delay: 1, duration: 0.8 }}
         >
           <motion.button 
-            className="text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg"
+            onClick={() => setShowSignup(true)}
+            className="text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg cursor-pointer"
             style={{ backgroundColor: '#2d4d31' }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -124,6 +143,122 @@ export default function Home() {
           </p>
         </motion.div>
       </div>
+
+      {/* Signup Modal */}
+      {showSignup && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setShowSignup(false)}
+        >
+          <motion.div
+            className="bg-white rounded-lg p-8 max-w-md w-full"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold" style={{ color: '#2d4d31' }}>
+                Join the Collective
+              </h2>
+              <button
+                onClick={() => setShowSignup(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <XMarkIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            <p className="text-gray-600 mb-6">
+              Limited to 75 operators. Secure your spot for October 18-20, 2025.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2d4d31' }}>
+                  Your Name *
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="w-full p-2 border-2 rounded focus:outline-none focus:border-green-500"
+                  style={{ borderColor: '#e5e7eb' }}
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2d4d31' }}>
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="w-full p-2 border-2 rounded focus:outline-none focus:border-green-500"
+                  style={{ borderColor: '#e5e7eb' }}
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2d4d31' }}>
+                  Property Name *
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="w-full p-2 border-2 rounded focus:outline-none focus:border-green-500"
+                  style={{ borderColor: '#e5e7eb' }}
+                  value={formData.property}
+                  onChange={(e) => setFormData({...formData, property: e.target.value})}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2d4d31' }}>
+                  Location
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-2 border-2 rounded focus:outline-none focus:border-green-500"
+                  style={{ borderColor: '#e5e7eb' }}
+                  placeholder="City, State"
+                  value={formData.location}
+                  onChange={(e) => setFormData({...formData, location: e.target.value})}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2d4d31' }}>
+                  Number of Rooms
+                </label>
+                <input
+                  type="number"
+                  className="w-full p-2 border-2 rounded focus:outline-none focus:border-green-500"
+                  style={{ borderColor: '#e5e7eb' }}
+                  value={formData.rooms}
+                  onChange={(e) => setFormData({...formData, rooms: e.target.value})}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 rounded text-white font-medium transition-colors hover:opacity-90"
+                style={{ backgroundColor: '#2d4d31' }}
+              >
+                Reserve My Spot - $299
+              </button>
+
+              <p className="text-xs text-gray-500 text-center mt-4">
+                Payment details will be sent via email. Cancel anytime before Sept 1 for full refund.
+              </p>
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
     </main>
   )
 }
