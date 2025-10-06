@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const attendees = [
   { 
@@ -61,6 +62,7 @@ const attendees = [
 
 export default function Directory() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [messageTo, setMessageTo] = useState<string | null>(null)
   
   const filtered = attendees.filter(person => 
     person.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -89,7 +91,6 @@ export default function Directory() {
           Connect with {attendees.length} independent hospitality operators
         </motion.p>
         
-        {/* Search Bar */}
         <motion.div 
           className="mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -106,14 +107,12 @@ export default function Directory() {
           />
         </motion.div>
 
-        {/* Results Count */}
         {searchTerm && (
           <p className="mb-4 text-sm" style={{ color: '#2d4d31' }}>
             Found {filtered.length} {filtered.length === 1 ? 'match' : 'matches'}
           </p>
         )}
 
-        {/* Attendee Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((attendee, index) => (
             <motion.div 
@@ -126,10 +125,12 @@ export default function Directory() {
             >
               <div className="p-6">
                 <div className="flex items-center mb-4">
-                  <img 
+                  <Image 
                     src={attendee.image} 
                     alt={attendee.name}
-                    className="w-16 h-16 rounded-full mr-4"
+                    width={64}
+                    height={64}
+                    className="rounded-full mr-4"
                   />
                   <div>
                     <h3 className="font-semibold text-lg" style={{ color: '#2d4d31' }}>
@@ -148,6 +149,7 @@ export default function Directory() {
                 <button 
                   className="w-full mt-4 py-2 rounded text-white font-medium transition-colors hover:opacity-90"
                   style={{ backgroundColor: '#2d4d31' }}
+                  onClick={() => setMessageTo(attendee.name)}
                 >
                   Connect
                 </button>
@@ -161,6 +163,54 @@ export default function Directory() {
             <p className="text-xl text-gray-500">No matches found</p>
             <p className="text-sm text-gray-400 mt-2">Try a different search term</p>
           </div>
+        )}
+
+        {/* Message Modal */}
+        {messageTo && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setMessageTo(null)}
+          >
+            <motion.div
+              className="bg-white rounded-lg p-6 max-w-md w-full"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#2d4d31' }}>
+                Connect with {messageTo}
+              </h3>
+              
+              <textarea
+                className="w-full p-3 border-2 rounded mb-4 h-32 focus:outline-none resize-none"
+                style={{ borderColor: '#2d4d31' }}
+                placeholder="Hi! I'd love to connect about..."
+                defaultValue="Hi! I saw you're attending The Herwood Collective. I'd love to chat about your experience with "
+              />
+              
+              <div className="flex gap-2">
+                <button 
+                  className="flex-1 py-2 rounded text-white font-medium transition-colors hover:opacity-90"
+                  style={{ backgroundColor: '#2d4d31' }}
+                  onClick={() => {
+                    alert('Message sent! They will receive your note via the app.')
+                    setMessageTo(null)
+                  }}
+                >
+                  Send Message
+                </button>
+                <button 
+                  className="flex-1 py-2 rounded border-2 font-medium transition-colors hover:bg-gray-50"
+                  style={{ borderColor: '#2d4d31', color: '#2d4d31' }}
+                  onClick={() => setMessageTo(null)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </div>
     </main>

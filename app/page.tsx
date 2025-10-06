@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="min-h-screen pb-20" style={{ backgroundColor: '#fff5ea' }}>
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Animated Logo */}
+        {/* Animated Logo - EXTRA LARGE */}
         <motion.div 
           className="flex justify-center mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -16,9 +16,9 @@ export default function Home() {
           <Image 
             src="/logo.png" 
             alt="The Herwood Collective" 
-            width={400} 
-            height={200}
-            className="w-auto h-32 md:h-40"
+            width={800} 
+            height={400}
+            className="w-auto h-56 md:h-80 lg:h-96"
             priority
           />
         </motion.div>
