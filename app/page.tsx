@@ -94,7 +94,7 @@ export default function Home() {
             79% of hosts manage alone
           </p>
           <p className="text-lg text-gray-600">
-            It's time for a community built for you
+            Its time for a community built for you
           </p>
         </motion.div>
       </div>
