@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ClockIcon, MapPinIcon, UserGroupIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
-const scheduleData = [
+const scheduleData: any[] = [
   {
     day: "Friday, Oct 18",
     date: "Day 1",
@@ -266,8 +266,8 @@ export default function Schedule() {
 
             <div className="space-y-4">
               {dayData.events
-                .filter(event => filterType === "All" || event.type === filterType)
-                .map((event, eventIndex) => (
+                .filter((event: any) => filterType === "All" || event.type === filterType)
+                .map((event: any, eventIndex: number) => (
                 <motion.div
                   key={event.id}
                   className="bg-white rounded-lg shadow-md p-5 border-l-4"
