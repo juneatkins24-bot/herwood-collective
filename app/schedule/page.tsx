@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ClockIcon, MapPinIcon, UserGroupIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
-const scheduleData: any[] = [
+const scheduleData = [
   {
     day: "Friday, Oct 18",
     date: "Day 1",
@@ -115,7 +115,8 @@ const scheduleData: any[] = [
         time: "9:00 AM - 10:00 AM",
         title: "Breakfast & Reflection",
         location: "The Herwood Inn",
-        type: "Meal"
+        type: "Meal",
+        description: ""
       },
       {
         id: 13,
@@ -266,8 +267,8 @@ export default function Schedule() {
 
             <div className="space-y-4">
               {dayData.events
-                .filter((event: any) => filterType === "All" || event.type === filterType)
-                .map((event: any, eventIndex: number) => (
+                .filter(event => filterType === "All" || event.type === filterType)
+                .map((event, eventIndex) => (
                 <motion.div
                   key={event.id}
                   className="bg-white rounded-lg shadow-md p-5 border-l-4"
@@ -303,13 +304,13 @@ export default function Schedule() {
                         </div>
                       </div>
 
-                      {event.description && (
+                      {event.description && event.description.length > 0 && (
                         <p className="text-gray-600 text-sm mb-2">
                           {event.description}
                         </p>
                       )}
 
-                      {event.speaker && (
+                      {'speaker' in event && event.speaker && (
                         <div className="flex items-center gap-1 text-sm">
                           <UserGroupIcon className="h-4 w-4" style={{ color: '#2d4d31' }} />
                           <span style={{ color: '#2d4d31' }} className="font-medium">
@@ -318,7 +319,7 @@ export default function Schedule() {
                         </div>
                       )}
 
-                      {event.bookable && (
+                      {'bookable' in event && event.bookable && (
                         <button
                           onClick={() => setShowBooking(true)}
                           className="mt-3 px-4 py-2 rounded text-white font-medium text-sm transition-all hover:opacity-90"
