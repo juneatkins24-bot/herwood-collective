@@ -78,22 +78,25 @@ export default function Directory() {
 
   return (
     <main className="min-h-screen pb-20" style={{ backgroundColor: '#fff5ea' }}>
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        
-        {/* Header with Keychain Image */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
+      {/* Full Width Keychain Banner */}
+      <div className="relative w-full h-48 md:h-64 mb-8">
+        <Image 
+          src="/keychain-mockup.png" 
+          alt="Room keys"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
             <motion.h1 
-              className="text-4xl font-bold mb-2"
-              style={{ color: '#2d4d31' }}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="text-4xl md:text-5xl font-bold mb-2 text-gray-800"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
             >
               Collective Directory
             </motion.h1>
-            
             <motion.p
-              className="text-gray-600"
+              className="text-gray-700 font-medium"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -101,28 +104,15 @@ export default function Directory() {
               Connect with {attendees.length} independent hospitality operators
             </motion.p>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, rotate: -10 }}
-            animate={{ opacity: 1, rotate: 5 }}
-            transition={{ delay: 0.3, type: "spring" }}
-            className="hidden md:block"
-          >
-            <Image 
-              src="/keychain-mockup.png" 
-              alt="Room keys"
-              width={200}
-              height={150}
-              className="drop-shadow-lg"
-            />
-          </motion.div>
         </div>
-        
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4">
         <motion.div 
           className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.3 }}
         >
           <input
             type="text"
@@ -147,12 +137,12 @@ export default function Directory() {
               className="bg-white rounded-lg shadow-lg overflow-hidden relative"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
+              transition={{ delay: 0.4 + index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
               {/* Check-in Status Badge */}
               {attendee.checkedIn && (
-                <div className="absolute top-2 right-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
+                <div className="absolute top-2 right-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full z-10">
                   Checked In
                 </div>
               )}
