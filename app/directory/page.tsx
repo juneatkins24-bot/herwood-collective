@@ -11,7 +11,8 @@ const attendees = [
     location: "Hudson, NY",
     rooms: 8,
     specialty: "Historic Renovation",
-    image: "https://i.pravatar.cc/150?img=1"
+    image: "https://i.pravatar.cc/150?img=1",
+    checkedIn: true
   },
   { 
     id: 2,
@@ -20,7 +21,8 @@ const attendees = [
     location: "Woodstock, NY",
     rooms: 12,
     specialty: "Farm-to-Table",
-    image: "https://i.pravatar.cc/150?img=3"
+    image: "https://i.pravatar.cc/150?img=3",
+    checkedIn: true
   },
   { 
     id: 3,
@@ -29,7 +31,8 @@ const attendees = [
     location: "Beacon, NY",
     rooms: 6,
     specialty: "Creative Retreats",
-    image: "https://i.pravatar.cc/150?img=5"
+    image: "https://i.pravatar.cc/150?img=5",
+    checkedIn: false
   },
   { 
     id: 4,
@@ -38,7 +41,8 @@ const attendees = [
     location: "Cold Spring, NY",
     rooms: 4,
     specialty: "Wellness Focus",
-    image: "https://i.pravatar.cc/150?img=4"
+    image: "https://i.pravatar.cc/150?img=4",
+    checkedIn: true
   },
   { 
     id: 5,
@@ -47,7 +51,8 @@ const attendees = [
     location: "Phoenicia, NY",
     rooms: 10,
     specialty: "Adventure Tourism",
-    image: "https://i.pravatar.cc/150?img=9"
+    image: "https://i.pravatar.cc/150?img=9",
+    checkedIn: false
   },
   { 
     id: 6,
@@ -56,7 +61,8 @@ const attendees = [
     location: "Saugerties, NY",
     rooms: 7,
     specialty: "Waterfront Properties",
-    image: "https://i.pravatar.cc/150?img=7"
+    image: "https://i.pravatar.cc/150?img=7",
+    checkedIn: true
   }
 ]
 
@@ -117,12 +123,34 @@ export default function Directory() {
           {filtered.map((attendee, index) => (
             <motion.div 
               key={attendee.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="bg-white rounded-lg shadow-lg overflow-hidden relative"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
+              {/* Keychain Badge */}
+              <div 
+                className="absolute -top-2 -right-2 transform rotate-12 z-10"
+                style={{ filter: attendee.checkedIn ? 'none' : 'grayscale(100%)' }}
+              >
+                <div 
+                  className="px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg"
+                  style={{ 
+                    backgroundColor: attendee.checkedIn ? '#2d4d31' : '#9ca3af',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                  }}
+                >
+                  {attendee.checkedIn ? 'CHECKED IN' : 'NOT HERE YET'}
+                </div>
+                <div className="w-8 h-8 rounded-full border-4 border-yellow-600 absolute -top-3 -left-3"
+                  style={{
+                    backgroundColor: 'transparent',
+                    borderColor: '#d4a953'
+                  }}
+                />
+              </div>
+
               <div className="p-6">
                 <div className="flex items-center mb-4">
                   <Image 
@@ -147,7 +175,7 @@ export default function Directory() {
                 </div>
                 
                 <button 
-                  className="w-full mt-4 py-2 rounded text-white font-medium transition-colors hover:opacity-90"
+                  className="w-full mt-4 py-2 rounded text-white font-medium transition-all hover:opacity-90 hover:scale-105"
                   style={{ backgroundColor: '#2d4d31' }}
                   onClick={() => setMessageTo(attendee.name)}
                 >
