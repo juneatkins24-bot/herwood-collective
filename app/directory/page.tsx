@@ -79,29 +79,50 @@ export default function Directory() {
   return (
     <main className="min-h-screen pb-20" style={{ backgroundColor: '#fff5ea' }}>
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <motion.h1 
-          className="text-4xl font-bold mb-2"
-          style={{ color: '#2d4d31' }}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          Collective Directory
-        </motion.h1>
         
-        <motion.p
-          className="text-gray-600 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Connect with {attendees.length} independent hospitality operators
-        </motion.p>
+        {/* Header with Keychain Image */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <motion.h1 
+              className="text-4xl font-bold mb-2"
+              style={{ color: '#2d4d31' }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+            >
+              Collective Directory
+            </motion.h1>
+            
+            <motion.p
+              className="text-gray-600"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              Connect with {attendees.length} independent hospitality operators
+            </motion.p>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0, rotate: -10 }}
+            animate={{ opacity: 1, rotate: 5 }}
+            transition={{ delay: 0.3, type: "spring" }}
+            className="hidden md:block"
+          >
+            <Image 
+              src="/keychain-mockup.png" 
+              alt="Room keys"
+              width={200}
+              height={150}
+              className="drop-shadow-lg"
+            />
+          </motion.div>
+        </div>
         
         <motion.div 
           className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.4 }}
         >
           <input
             type="text"
@@ -126,30 +147,15 @@ export default function Directory() {
               className="bg-white rounded-lg shadow-lg overflow-hidden relative"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + index * 0.1 }}
+              transition={{ delay: 0.5 + index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
-              {/* Keychain Badge */}
-              <div 
-                className="absolute -top-2 -right-2 transform rotate-12 z-10"
-                style={{ filter: attendee.checkedIn ? 'none' : 'grayscale(100%)' }}
-              >
-                <div 
-                  className="px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg"
-                  style={{ 
-                    backgroundColor: attendee.checkedIn ? '#2d4d31' : '#9ca3af',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-                  }}
-                >
-                  {attendee.checkedIn ? 'CHECKED IN' : 'NOT HERE YET'}
+              {/* Check-in Status Badge */}
+              {attendee.checkedIn && (
+                <div className="absolute top-2 right-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
+                  Checked In
                 </div>
-                <div className="w-8 h-8 rounded-full border-4 border-yellow-600 absolute -top-3 -left-3"
-                  style={{
-                    backgroundColor: 'transparent',
-                    borderColor: '#d4a953'
-                  }}
-                />
-              </div>
+              )}
 
               <div className="p-6">
                 <div className="flex items-center mb-4">
@@ -175,7 +181,7 @@ export default function Directory() {
                 </div>
                 
                 <button 
-                  className="w-full mt-4 py-2 rounded text-white font-medium transition-all hover:opacity-90 hover:scale-105"
+                  className="w-full mt-4 py-2 rounded text-white font-medium transition-all hover:opacity-90"
                   style={{ backgroundColor: '#2d4d31' }}
                   onClick={() => setMessageTo(attendee.name)}
                 >
