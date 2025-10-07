@@ -26,7 +26,20 @@ const posts = [
     likes: 234,
     time: "1 day ago"
   },
-  // Add more posts as you create them
+  {
+    id: 4,
+    image: "/social-post-4.jpg",
+    caption: "Stop googling your problems at 2am. Ask someone who's been there.",
+    likes: 178,
+    time: "2 days ago"
+  },
+  {
+    id: 5,
+    image: "/social-post-5.jpg",
+    caption: "$3,000 conferences → Convention centers / $299 gathering → Actual boutique hotels",
+    likes: 301,
+    time: "3 days ago"
+  }
 ]
 
 export default function Social() {
@@ -41,57 +54,45 @@ export default function Social() {
   }
 
   return (
-    <main className="min-h-screen pb-20" style={{ backgroundColor: '#fff5ea' }}>
-      <div className="max-w-md mx-auto bg-white min-h-screen">
+    <main className="min-h-screen pb-20" style={{ backgroundColor: '#000' }}>
+      <div className="max-w-md mx-auto bg-black min-h-screen">
         
-        {/* Instagram-style Header */}
-        <div className="sticky top-0 bg-white border-b z-10 px-4 py-3">
+        {/* Instagram Header */}
+        <div className="sticky top-0 bg-black text-white border-b border-gray-800 z-10 px-4 py-3">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold">@theherwoodcollective</h1>
-            <div className="flex gap-4">
-              <PaperAirplaneIcon className="h-6 w-6" />
-            </div>
+            <h1 className="text-xl font-semibold">theherwoodcollective</h1>
+            <PaperAirplaneIcon className="h-6 w-6 -rotate-12" />
           </div>
         </div>
 
-        {/* Stories Bar */}
-        <div className="flex gap-3 p-4 border-b overflow-x-auto">
-          {['Your Story', 'Sarah', 'Marcus', 'Emma', 'David'].map((name, i) => (
-            <div key={i} className="flex flex-col items-center flex-shrink-0">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-400 to-pink-600 p-0.5">
-                <div className="w-full h-full rounded-full bg-white p-0.5">
-                  <div className="w-full h-full rounded-full bg-gray-200"></div>
-                </div>
-              </div>
-              <span className="text-xs mt-1">{name}</span>
-            </div>
-          ))}
-        </div>
-
         {/* Posts Feed */}
-        <div className="divide-y">
+        <div className="divide-y divide-gray-800">
           {posts.map((post, index) => (
             <motion.div 
               key={post.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="pb-3"
+              className="pb-3 bg-black"
             >
               {/* Post Header */}
               <div className="flex items-center justify-between p-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 p-0.5">
+                    <div className="w-full h-full rounded-full bg-black p-0.5">
+                      <div className="w-full h-full rounded-full bg-gradient-to-br from-green-500 to-green-700"></div>
+                    </div>
+                  </div>
                   <div>
-                    <p className="text-sm font-semibold">theherwoodcollective</p>
-                    <p className="text-xs text-gray-500">Woodstock, NY</p>
+                    <p className="text-sm font-semibold text-white">theherwoodcollective</p>
+                    <p className="text-xs text-gray-400">Woodstock, NY</p>
                   </div>
                 </div>
-                <button className="text-gray-700">•••</button>
+                <button className="text-gray-400">•••</button>
               </div>
 
-              {/* Post Image */}
-              <div className="aspect-square bg-gray-100 relative">
+              {/* Post Image - 4:5 Ratio */}
+              <div className="relative bg-gray-900" style={{ aspectRatio: '4/5' }}>
                 <img 
                   src={post.image} 
                   alt="Post"
@@ -101,8 +102,9 @@ export default function Social() {
                     e.currentTarget.nextElementSibling?.classList.remove('hidden')
                   }}
                 />
-                <div className="hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green-50 to-cream p-8">
-                  <p className="text-center font-bold text-lg" style={{ color: '#2d4d31' }}>
+                <div className="hidden absolute inset-0 flex items-center justify-center p-8" 
+                  style={{ backgroundColor: '#fff5ea' }}>
+                  <p className="text-center font-bold text-xl" style={{ color: '#2d4d31' }}>
                     {post.caption}
                   </p>
                 </div>
@@ -111,28 +113,31 @@ export default function Social() {
               {/* Action Buttons */}
               <div className="flex items-center justify-between p-3">
                 <div className="flex gap-4">
-                  <button onClick={() => toggleLike(post.id)}>
+                  <button 
+                    onClick={() => toggleLike(post.id)}
+                    className="transition-transform active:scale-125"
+                  >
                     {likedPosts.includes(post.id) ? (
-                      <HeartSolid className="h-6 w-6 text-red-500" />
+                      <HeartSolid className="h-7 w-7 text-red-500" />
                     ) : (
-                      <HeartIcon className="h-6 w-6" />
+                      <HeartIcon className="h-7 w-7 text-white" />
                     )}
                   </button>
-                  <ChatBubbleOvalLeftIcon className="h-6 w-6" />
-                  <PaperAirplaneIcon className="h-6 w-6 -rotate-45" />
+                  <ChatBubbleOvalLeftIcon className="h-7 w-7 text-white" />
+                  <PaperAirplaneIcon className="h-7 w-7 text-white -rotate-45" />
                 </div>
-                <BookmarkIcon className="h-6 w-6" />
+                <BookmarkIcon className="h-7 w-7 text-white" />
               </div>
 
               {/* Likes and Caption */}
               <div className="px-3">
-                <p className="font-semibold text-sm">
+                <p className="font-semibold text-sm text-white">
                   {likedPosts.includes(post.id) ? post.likes + 1 : post.likes} likes
                 </p>
-                <p className="text-sm mt-1">
+                <p className="text-sm mt-1 text-white">
                   <span className="font-semibold">theherwoodcollective</span> {post.caption}
                 </p>
-                <p className="text-xs text-gray-500 mt-2">{post.time}</p>
+                <p className="text-xs text-gray-400 mt-2">{post.time}</p>
               </div>
             </motion.div>
           ))}
