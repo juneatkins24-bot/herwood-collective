@@ -79,3 +79,4 @@ export default function NavBar() {
     </nav>
   )
 }
+<Link href="/social">View Our Instagram</Link>
