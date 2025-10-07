@@ -12,7 +12,8 @@ const attendees = [
     rooms: 8,
     specialty: "Historic Renovation",
     image: "https://i.pravatar.cc/150?img=1",
-    checkedIn: true
+    checkedIn: true,
+    roomKey: "101"
   },
   { 
     id: 2,
@@ -22,7 +23,8 @@ const attendees = [
     rooms: 12,
     specialty: "Farm-to-Table",
     image: "https://i.pravatar.cc/150?img=3",
-    checkedIn: true
+    checkedIn: true,
+    roomKey: "204"
   },
   { 
     id: 3,
@@ -32,7 +34,8 @@ const attendees = [
     rooms: 6,
     specialty: "Creative Retreats",
     image: "https://i.pravatar.cc/150?img=5",
-    checkedIn: false
+    checkedIn: false,
+    roomKey: "305"
   },
   { 
     id: 4,
@@ -42,7 +45,8 @@ const attendees = [
     rooms: 4,
     specialty: "Wellness Focus",
     image: "https://i.pravatar.cc/150?img=4",
-    checkedIn: true
+    checkedIn: true,
+    roomKey: "108"
   },
   { 
     id: 5,
@@ -52,7 +56,8 @@ const attendees = [
     rooms: 10,
     specialty: "Adventure Tourism",
     image: "https://i.pravatar.cc/150?img=9",
-    checkedIn: false
+    checkedIn: false,
+    roomKey: "217"
   },
   { 
     id: 6,
@@ -62,7 +67,8 @@ const attendees = [
     rooms: 7,
     specialty: "Waterfront Properties",
     image: "https://i.pravatar.cc/150?img=7",
-    checkedIn: true
+    checkedIn: true,
+    roomKey: "402"
   }
 ]
 
@@ -78,41 +84,50 @@ export default function Directory() {
 
   return (
     <main className="min-h-screen pb-20" style={{ backgroundColor: '#fff5ea' }}>
-      {/* Full Width Keychain Banner */}
-      <div className="relative w-full h-48 md:h-64 mb-8">
+      {/* Full Width Hero Image */}
+      <motion.div 
+        className="relative w-full h-56 md:h-72"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <Image 
           src="/keychain-mockup.png" 
           alt="Room keys"
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <motion.h1 
-              className="text-4xl md:text-5xl font-bold mb-2 text-gray-800"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              Collective Directory
-            </motion.h1>
-            <motion.p
-              className="text-gray-700 font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              Connect with {attendees.length} independent hospitality operators
-            </motion.p>
-          </div>
+      </motion.div>
+
+      {/* Title Below Image */}
+      <div className="bg-white py-6 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold mb-2"
+            style={{ color: '#2d4d31' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Collective Directory
+          </motion.h1>
+          <motion.p
+            className="text-gray-600"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Connect with {attendees.length} independent hospitality operators • Each key opens a new connection
+          </motion.p>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 py-8">
         <motion.div 
           className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.4 }}
         >
           <input
             type="text"
@@ -134,29 +149,52 @@ export default function Directory() {
           {filtered.map((attendee, index) => (
             <motion.div 
               key={attendee.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden relative"
+              className="bg-white rounded-lg shadow-lg overflow-hidden relative group"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
+              transition={{ delay: 0.5 + index * 0.1 }}
+              whileHover={{ scale: 1.03 }}
             >
-              {/* Check-in Status Badge */}
-              {attendee.checkedIn && (
-                <div className="absolute top-2 right-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full z-10">
-                  Checked In
+              {/* Room Key Tag */}
+              <motion.div 
+                className="absolute -top-2 -right-2 z-10"
+                animate={{ 
+                  rotate: [0, 3, -3, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 3
+                }}
+              >
+                <div className="bg-yellow-600 rounded-full p-3 shadow-lg">
+                  <div className="bg-white rounded px-2 py-1 text-xs font-bold" style={{ color: '#2d4d31' }}>
+                    ROOM {attendee.roomKey}
+                  </div>
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1">
+                    <div className="w-3 h-3 rounded-full border-2 border-yellow-600 bg-white"></div>
+                  </div>
                 </div>
-              )}
+              </motion.div>
 
+              {/* Card Content */}
               <div className="p-6">
                 <div className="flex items-center mb-4">
-                  <Image 
-                    src={attendee.image} 
-                    alt={attendee.name}
-                    width={64}
-                    height={64}
-                    className="rounded-full mr-4"
-                  />
-                  <div>
+                  <div className="relative">
+                    <Image 
+                      src={attendee.image} 
+                      alt={attendee.name}
+                      width={64}
+                      height={64}
+                      className="rounded-full"
+                    />
+                    {attendee.checkedIn && (
+                      <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs">✓</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="ml-4">
                     <h3 className="font-semibold text-lg" style={{ color: '#2d4d31' }}>
                       {attendee.name}
                     </h3>
@@ -164,18 +202,29 @@ export default function Directory() {
                   </div>
                 </div>
                 
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-sm mb-4">
                   <p><span className="font-medium">📍</span> {attendee.location}</p>
                   <p><span className="font-medium">🏠</span> {attendee.rooms} rooms</p>
                   <p><span className="font-medium">✨</span> {attendee.specialty}</p>
                 </div>
+
+                {/* Key-themed Status */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-medium px-2 py-1 rounded-full"
+                    style={{ 
+                      backgroundColor: attendee.checkedIn ? '#e8f5e9' : '#fafafa',
+                      color: attendee.checkedIn ? '#2d4d31' : '#9ca3af'
+                    }}>
+                    {attendee.checkedIn ? '🔑 Keys Collected' : '🔒 Not Arrived'}
+                  </span>
+                </div>
                 
                 <button 
-                  className="w-full mt-4 py-2 rounded text-white font-medium transition-all hover:opacity-90"
+                  className="w-full py-2 rounded text-white font-medium transition-all hover:opacity-90 group-hover:shadow-lg"
                   style={{ backgroundColor: '#2d4d31' }}
                   onClick={() => setMessageTo(attendee.name)}
                 >
-                  Connect
+                  Unlock Connection
                 </button>
               </div>
             </motion.div>
@@ -203,9 +252,14 @@ export default function Directory() {
               animate={{ scale: 1, opacity: 1 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold mb-4" style={{ color: '#2d4d31' }}>
-                Connect with {messageTo}
-              </h3>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="bg-yellow-600 rounded-full p-2">
+                  <span className="text-white text-xs font-bold">🔑</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: '#2d4d31' }}>
+                  Connect with {messageTo}
+                </h3>
+              </div>
               
               <textarea
                 className="w-full p-3 border-2 rounded mb-4 h-32 focus:outline-none resize-none"
@@ -219,7 +273,7 @@ export default function Directory() {
                   className="flex-1 py-2 rounded text-white font-medium transition-colors hover:opacity-90"
                   style={{ backgroundColor: '#2d4d31' }}
                   onClick={() => {
-                    alert('Message sent! They will receive your note via the app.')
+                    alert('Connection unlocked! They will receive your message.')
                     setMessageTo(null)
                   }}
                 >
