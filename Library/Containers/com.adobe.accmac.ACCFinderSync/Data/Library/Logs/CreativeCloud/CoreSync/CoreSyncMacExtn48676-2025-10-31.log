@@ -1,0 +1,6 @@
+2025-10-31T18:56:36.267749Z: t=0103: Info: extension.bridge(48676): Attempting to attach shared connection (ACCFinderBridge.mm.-[ACCFinderBridge2 setupCommunication].209)
+2025-10-31T18:56:36.271138Z: t=0103: Info: extension.bridge(48676): Exiting: creating shared connection (ACCFinderBridge.mm.-[ACCFinderBridge2 setupCommunication].233)
+2025-10-31T18:56:36.271369Z: t=0103: Info: extension.bridge(48676): intialization succsessfull (ACCFinderBridge.mm.-[ACCFinderBridge2 init].151)
+2025-10-31T18:56:36.271394Z: t=0103: Info: extension.findersync(48676): init. compiled: Jun 19 2025 21:17:45 (ACCFinderSync.mm.-[ACCFinderSync initWithOverriddenController:].53)
+2025-10-31T18:56:39.863921Z: t=0103: Info: extension.bridge(48676): Enter: Invaldating connection for 0x12de085a0 (ACCFinderBridge.mm.-[ACCFinderBridge2 invalidateThreads].185)
+2025-10-31T18:56:39.864272Z: t=0103: Info: extension.bridge(48676): Exiting: Invaldating connection for 0x12de085a0 (ACCFinderBridge.mm.-[ACCFinderBridge2 invalidateThreads].200)
