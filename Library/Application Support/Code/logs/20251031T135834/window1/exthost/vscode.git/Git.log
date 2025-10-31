@@ -1,0 +1,89 @@
+2025-10-31 13:58:37.029 [info] [main] Log level: Info
+2025-10-31 13:58:37.047 [info] [main] Validating found git in: "/usr/bin/git"
+2025-10-31 13:58:37.138 [info] [main] Using git "2.39.5 (Apple Git-154)" from "/usr/bin/git"
+2025-10-31 13:58:37.138 [info] [Model][doInitialScan] Initial repository scan started
+2025-10-31 13:58:37.173 [info] > git rev-parse --show-toplevel [17ms]
+2025-10-31 13:58:37.194 [info] > git rev-parse --git-dir --git-common-dir --show-superproject-working-tree [19ms]
+2025-10-31 13:58:37.198 [info] [Model][openRepository] Opened repository (path): /Users/juneatkins/Documents/rematched/rematched
+2025-10-31 13:58:37.198 [info] [Model][openRepository] Opened repository (real path): /Users/juneatkins/Documents/rematched/rematched
+2025-10-31 13:58:37.198 [info] [Model][openRepository] Opened repository (kind): repository
+2025-10-31 13:58:37.200 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2025-10-31 13:58:37.202 [info] [Git][getRemotes] No remotes found in the git config file
+2025-10-31 13:58:37.212 [info] > git config --get commit.template [10ms]
+2025-10-31 13:58:37.213 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [11ms]
+2025-10-31 13:58:37.225 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [10ms]
+2025-10-31 13:58:37.226 [info] > git status -z -uall [12ms]
+2025-10-31 13:58:37.230 [info] [Git][getRemotes] No remotes found in the git config file
+2025-10-31 13:58:37.246 [info] > git config --get commit.template [17ms]
+2025-10-31 13:58:37.247 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [17ms]
+2025-10-31 13:58:37.248 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [21ms]
+2025-10-31 13:58:37.257 [info] > git config --get --local branch.main.vscode-merge-base [8ms]
+2025-10-31 13:58:37.257 [warning] [Git][config] git config failed: Failed to execute git
+2025-10-31 13:58:37.258 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [10ms]
+2025-10-31 13:58:37.258 [info] > git status -z -uall [10ms]
+2025-10-31 13:58:37.269 [info] > git reflog main --grep-reflog=branch: Created from *. [12ms]
+2025-10-31 13:58:37.713 [info] > git check-ignore -v -z --stdin [10ms]
+2025-10-31 13:58:46.879 [info] [Git][getRemotes] No remotes found in the git config file
+2025-10-31 13:58:46.901 [info] > git config --get commit.template [23ms]
+2025-10-31 13:58:46.902 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [23ms]
+2025-10-31 13:58:46.914 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [10ms]
+2025-10-31 13:58:46.915 [info] > git status -z -uall [12ms]
+2025-10-31 13:58:51.898 [info] [main] Log level: Info
+2025-10-31 13:58:51.904 [info] [main] Validating found git in: "/usr/bin/git"
+2025-10-31 13:58:51.922 [info] [main] Using git "2.39.5 (Apple Git-154)" from "/usr/bin/git"
+2025-10-31 13:58:51.922 [info] [Model][doInitialScan] Initial repository scan started
+2025-10-31 13:58:51.948 [info] > git rev-parse --show-toplevel [23ms]
+2025-10-31 13:58:51.967 [info] > git rev-parse --git-dir --git-common-dir --show-superproject-working-tree [12ms]
+2025-10-31 13:58:51.971 [info] [Model][openRepository] Opened repository (path): /Users/juneatkins
+2025-10-31 13:58:51.971 [info] [Model][openRepository] Opened repository (real path): /Users/juneatkins
+2025-10-31 13:58:51.971 [info] [Model][openRepository] Opened repository (kind): repository
+2025-10-31 13:58:51.980 [info] > git rev-parse --show-toplevel [8ms]
+2025-10-31 13:58:51.981 [info] > git config --get commit.template [8ms]
+2025-10-31 13:58:51.982 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [8ms]
+2025-10-31 13:58:51.988 [info] > git rev-parse --show-toplevel [7ms]
+2025-10-31 13:58:51.992 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [9ms]
+2025-10-31 13:58:51.996 [info] > git rev-parse --show-toplevel [7ms]
+2025-10-31 13:58:52.004 [info] > git rev-parse --show-toplevel [7ms]
+2025-10-31 13:58:52.014 [info] > git rev-parse --git-dir --git-common-dir --show-superproject-working-tree [10ms]
+2025-10-31 13:58:52.016 [info] [Model][openRepository] Opened repository (path): /Users/juneatkins/Documents/rematched/rematched
+2025-10-31 13:58:52.016 [info] [Model][openRepository] Opened repository (real path): /Users/juneatkins/Documents/rematched/rematched
+2025-10-31 13:58:52.016 [info] [Model][openRepository] Opened repository (kind): repository
+2025-10-31 13:58:52.017 [info] [Model][doInitialScan] Initial repository scan completed - repositories (2), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2025-10-31 13:58:52.019 [info] [Git][getRemotes] No remotes found in the git config file
+2025-10-31 13:58:52.026 [info] > git config --get commit.template [8ms]
+2025-10-31 13:58:52.027 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [9ms]
+2025-10-31 13:58:52.036 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [8ms]
+2025-10-31 13:58:52.036 [info] > git status -z -uall [9ms]
+2025-10-31 13:58:52.040 [info] [Git][getRemotes] No remotes found in the git config file
+2025-10-31 13:58:52.047 [info] > git config --get commit.template [8ms]
+2025-10-31 13:58:52.047 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [9ms]
+2025-10-31 13:58:52.048 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [8ms]
+2025-10-31 13:58:52.057 [info] > git config --get --local branch.main.vscode-merge-base [9ms]
+2025-10-31 13:58:52.057 [warning] [Git][config] git config failed: Failed to execute git
+2025-10-31 13:58:52.058 [info] > git status -z -uall [10ms]
+2025-10-31 13:58:52.060 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [11ms]
+2025-10-31 13:58:52.068 [info] > git reflog main --grep-reflog=branch: Created from *. [9ms]
+2025-10-31 13:58:52.531 [info] > git check-ignore -v -z --stdin [9ms]
+2025-10-31 13:58:52.531 [info] > git check-ignore -v -z --stdin [10ms]
+2025-10-31 13:59:00.799 [info] > git status -z -uall [8816ms] (cancelled)
+2025-10-31 13:59:00.821 [info] > git config --get commit.template [18ms]
+2025-10-31 13:59:00.824 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [28ms]
+2025-10-31 13:59:00.825 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [21ms]
+2025-10-31 13:59:00.836 [info] > git config --get --local branch.main.vscode-merge-base [11ms]
+2025-10-31 13:59:00.838 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [11ms]
+2025-10-31 13:59:00.853 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/origin/main refs/remotes/origin/main [17ms]
+2025-10-31 13:59:06.745 [info] > git status -z -uall [5919ms] (cancelled)
+2025-10-31 13:59:07.240 [info] > git config --get commit.template [11ms]
+2025-10-31 13:59:07.241 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [12ms]
+2025-10-31 13:59:07.250 [info] > git status -z -uall [9ms]
+2025-10-31 13:59:07.250 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [8ms]
+2025-10-31 13:59:07.276 [info] > git merge-base refs/heads/main refs/remotes/origin/main [24ms]
+2025-10-31 13:59:07.297 [info] > git diff --name-status -z --diff-filter=ADMR 49e479b254fec42d13b2fe86bc615c5e75239ff9...refs/remotes/origin/main [20ms]
+2025-10-31 13:59:23.291 [info] > git config --get commit.template [35ms]
+2025-10-31 13:59:23.296 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [39ms]
+2025-10-31 13:59:23.307 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [9ms]
+2025-10-31 13:59:23.309 [info] > git status -z -uall [12ms]
+2025-10-31 13:59:28.717 [info] > git config --get commit.template [13ms]
+2025-10-31 13:59:28.718 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) --ignore-case refs/heads/main refs/remotes/main [12ms]
+2025-10-31 13:59:28.727 [info] > git status -z -uall [9ms]
+2025-10-31 13:59:28.727 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [8ms]

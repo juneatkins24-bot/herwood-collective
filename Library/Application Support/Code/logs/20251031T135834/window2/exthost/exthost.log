@@ -1,0 +1,12 @@
+2025-10-31 13:59:24.234 [info] Extension host with pid 49212 started
+2025-10-31 13:59:24.234 [info] Skipping acquiring lock for /Users/juneatkins/Library/Application Support/Code/User/workspaceStorage/1ac5e3b9dfbaa5692fd783b632f81e3a.
+2025-10-31 13:59:24.241 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-10-31 13:59:24.255 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-10-31 13:59:24.281 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-10-31 13:59:24.283 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-10-31 13:59:24.307 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-10-31 13:59:24.362 [info] Eager extensions activated
+2025-10-31 13:59:24.366 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-10-31 13:59:24.367 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-10-31 13:59:28.530 [info] Extension host terminating: renderer closed the MessagePort
+2025-10-31 13:59:28.546 [info] Extension host with pid 49212 exiting with code 0
